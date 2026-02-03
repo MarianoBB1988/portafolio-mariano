@@ -1,4 +1,4 @@
-# Portfolio de Mariano
+# Portafolio de Mariano Bastarreix
 
 Este es el repositorio del portafolio personal de Mariano, desarrollado con Next.js y Tailwind CSS.
 
