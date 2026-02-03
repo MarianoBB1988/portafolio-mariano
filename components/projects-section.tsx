@@ -173,45 +173,20 @@ export function ProjectsSection() {
                   <CardTitle className="text-xl text-card-foreground leading-snug group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
-                  {/* Fallback: Si no se puede mostrar el iframe, mostrar imagen de preview y botón */}
-                  {project.videoLinkedinEmbed ? (
-                    <div className="w-full rounded-lg overflow-hidden border border-border flex flex-col items-center mt-4">
-                      <div className="w-full flex justify-center">
-                        <iframe
-                          src={project.videoLinkedinEmbed}
-                          allowFullScreen
-                          width="504"
-                          height="399"
-                          frameBorder="0"
-                          className="rounded-lg border-none"
-                          style={{ display: 'block' }}
-                          sandbox="allow-scripts allow-same-origin"
-                        />
-                      </div>
-                      {/* Fallback visual si el iframe no carga (en producción) */}
-                      <div className="w-full flex flex-col items-center gap-2 mt-2">
-                        {project.videoPreviewImg && (
-                          <img
-                            src={project.videoPreviewImg}
-                            alt={project.title + ' preview'}
-                            className="rounded-lg border w-full max-w-md object-cover shadow-md"
-                          />
-                        )}
-                        {project.videoLinkedinUrl && (
-                          <a
-                            href={project.videoLinkedinUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-2 px-4 py-2 bg-primary text-white rounded-lg font-semibold shadow hover:bg-primary/80 transition-colors flex items-center gap-2"
-                          >
-                            <Play className="w-4 h-4" />
-                            Ver video en LinkedIn
-                          </a>
-                        )}
-                        <span className="text-xs text-muted-foreground mt-1">Si el video no aparece, haz clic en el botón para verlo en LinkedIn.</span>
-                      </div>
+                  {/* Solo mostrar el botón para ver el video en LinkedIn */}
+                  {project.videoLinkedinUrl && (
+                    <div className="w-full flex flex-col items-center mt-4">
+                      <a
+                        href={project.videoLinkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-primary text-white rounded-lg font-semibold shadow hover:bg-primary/80 transition-colors flex items-center gap-2"
+                      >
+                        <Play className="w-4 h-4" />
+                        Ver video en LinkedIn
+                      </a>
                     </div>
-                  ) : null}
+                  )}
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
@@ -234,17 +209,37 @@ export function ProjectsSection() {
                     )}
                   </div>
                   <Dialog open={selectedProject?.id === project.id} onOpenChange={(open) => { if (!open) setSelectedProject(null); }}>
-                    <DialogTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="gap-2 text-primary hover:text-primary/80 -ml-2"
-                        onClick={() => setSelectedProject(project)}
-                      >
-                        Ver detalles
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    </DialogTrigger>
+                    <div className="flex gap-2">
+                      <DialogTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="gap-2 text-primary hover:text-primary/80 -ml-2"
+                          onClick={() => setSelectedProject(project)}
+                        >
+                          Ver detalles
+                          <ExternalLink className="h-4 w-4" />
+                        </Button>
+                      </DialogTrigger>
+                      {project.videoLinkedinUrl && (
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="gap-2 text-primary border-primary hover:bg-primary/10"
+                        >
+                          <a
+                            href={project.videoLinkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Ver en LinkedIn"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            LinkedIn
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                     {selectedProject?.id === project.id && (
                       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                         <DialogHeader>
