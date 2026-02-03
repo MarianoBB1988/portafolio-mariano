@@ -173,19 +173,45 @@ export function ProjectsSection() {
                   <CardTitle className="text-xl text-card-foreground leading-snug group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
-                  {/* Mostrar el iframe debajo del título si existe videoLinkedinEmbed */}
-                  {project.videoLinkedinEmbed && (
-                    <div className="w-full rounded-lg overflow-hidden border border-border flex justify-center mt-4">
-                      <iframe
-                        src={project.videoLinkedinEmbed}
-                        allowFullScreen
-                        width="504"
-                        height="399"
-                        frameBorder="0"
-                        className="rounded-lg border-none"
-                      />
+                  {/* Fallback: Si no se puede mostrar el iframe, mostrar imagen de preview y botón */}
+                  {project.videoLinkedinEmbed ? (
+                    <div className="w-full rounded-lg overflow-hidden border border-border flex flex-col items-center mt-4">
+                      <div className="w-full flex justify-center">
+                        <iframe
+                          src={project.videoLinkedinEmbed}
+                          allowFullScreen
+                          width="504"
+                          height="399"
+                          frameBorder="0"
+                          className="rounded-lg border-none"
+                          style={{ display: 'block' }}
+                          sandbox="allow-scripts allow-same-origin"
+                        />
+                      </div>
+                      {/* Fallback visual si el iframe no carga (en producción) */}
+                      <div className="w-full flex flex-col items-center gap-2 mt-2">
+                        {project.videoPreviewImg && (
+                          <img
+                            src={project.videoPreviewImg}
+                            alt={project.title + ' preview'}
+                            className="rounded-lg border w-full max-w-md object-cover shadow-md"
+                          />
+                        )}
+                        {project.videoLinkedinUrl && (
+                          <a
+                            href={project.videoLinkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2 px-4 py-2 bg-primary text-white rounded-lg font-semibold shadow hover:bg-primary/80 transition-colors flex items-center gap-2"
+                          >
+                            <Play className="w-4 h-4" />
+                            Ver video en LinkedIn
+                          </a>
+                        )}
+                        <span className="text-xs text-muted-foreground mt-1">Si el video no aparece, haz clic en el botón para verlo en LinkedIn.</span>
+                      </div>
                     </div>
-                  )}
+                  ) : null}
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
