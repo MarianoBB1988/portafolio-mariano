@@ -58,6 +58,7 @@ const projects = [
     ],
     icon: MonitorPlay,
     videoPlaceholder: "",
+      videoLinkedinUrl: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7402452358049218561/",
     features: [
       "Navegación de cortes TAC",
       "Radiografías simples y complejas",
@@ -82,6 +83,7 @@ const projects = [
     ],
     icon: Stethoscope,
     videoPlaceholder: "",
+      videoLinkedinUrl: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7424456817327505408/",
     features: [
       "Análisis de niveles de gris",
       "Detección de estructuras anatómicas",
@@ -100,6 +102,7 @@ const projects = [
     technologies: ["React", "PHP", "MySQL", "WebSocket", "API REST"],
     icon: Zap,
     videoPlaceholder: "",
+      videoLinkedinUrl: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7236869880493289472/",
     features: [
       "Comunicación en tiempo real",
       "Interfaz dinámica y reactiva",
@@ -118,6 +121,7 @@ const projects = [
     technologies: ["React", "JavaScript", "CSS", "HTML", "Git"],
     icon: Code2,
     videoPlaceholder: "",
+      videoLinkedinUrl: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7222296696137916418/",
     githubUrl: "https://github.com/MarianoBB1988/EntregaFinal-MarianoBastarreix",
     features: [
       "Componentes reutilizables",
