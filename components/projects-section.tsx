@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ExternalLink, Play, Stethoscope, MonitorPlay, Zap, Code2 } from "lucide-react";
+import { ExternalLink, Play, Stethoscope, MonitorPlay, Zap, Code2, TestTube } from "lucide-react";
 
 const projects = [
   {
@@ -130,6 +130,33 @@ const projects = [
       "Código limpio",
     ],
     videoLinkedinEmbed: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7222296696137916418?compact=1",
+  },
+  {
+    id: 6,
+    title: "Automatización de Casos de Prueba QA con Selenium",
+    description:
+      "Suite completa de automatización de pruebas desarrollada con Selenium y Python. Automatiza validaciones end-to-end de aplicaciones web, generando reportes detallados y mejorando la eficiencia del proceso QA.",
+    fullDescription:
+      "Proyecto de automatización QA que implementa un framework robusto de pruebas automatizadas utilizando Selenium WebDriver con Python. Incluye pruebas funcionales, validaciones de elementos UI, manejo de esperas implícitas y explícitas, captura de evidencia mediante screenshots, y generación de reportes HTML detallados. El proyecto demuestra buenas prácticas como el patrón Page Object Model, datos parametrizados, y ejecución paralela de pruebas para optimizar el tiempo de ejecución.",
+    technologies: [
+      "Selenium",
+      "Python",
+      "QA Automation",
+      "Testing Framework",
+      "HTML Reports",
+    ],
+    icon: TestTube,
+    videoPlaceholder: "",
+    videoLinkedinUrl: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7424915078258417665/",
+    videoLinkedinEmbed: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7424915078258417665?compact=1",
+    features: [
+      "Pruebas automatizadas end-to-end",
+      "Page Object Model",
+      "Pruebas parametrizadas",
+      "Reportes HTML detallados",
+      "Captura de evidencia",
+      "Ejecución paralela",
+    ],
   },
 ];
 
