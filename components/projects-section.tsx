@@ -12,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ExternalLink, Play, Stethoscope, MonitorPlay, Zap, Code2, TestTube } from "lucide-react";
+import { ExternalLink, Play, Stethoscope, MonitorPlay, Zap, Code2, TestTube, CreditCard } from "lucide-react";
 
 const projects = [
   {
@@ -34,6 +34,8 @@ const projects = [
     videoPlaceholder: "",
     videoLinkedinUrl: "https://www.linkedin.com/posts/mariano-bastarreix_reactjs-cornerstonejs-dicom-activity-7402452521232809984-fNS5?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADWUzJkBQyBFzXgt0LGIRbZ4nhoes6v2tp4",
     videoLinkedinEmbed: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7296189275165847552?compact=1",
+    githubUrl: "https://github.com/MarianoBB1988/dashboardDental.git",
+    backendGithubUrl: "https://github.com/MarianoBB1988/backendDental.git",
     features: [
       "Gestión integral de pacientes",
       "Recordatorios vía WhatsApp",
@@ -149,6 +151,7 @@ const projects = [
     videoPlaceholder: "",
     videoLinkedinUrl: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7424915078258417665/",
     videoLinkedinEmbed: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7424915078258417665?compact=1",
+    githubUrl: "https://github.com/MarianoBB1988/Selenium_e-commerce.git",
     features: [
       "Pruebas automatizadas end-to-end",
       "Page Object Model",
@@ -156,6 +159,34 @@ const projects = [
       "Reportes HTML detallados",
       "Captura de evidencia",
       "Ejecución paralela",
+    ],
+  },
+  {
+    id: 7,
+    title: "Deprelo - Aplicación de Amortización",
+    description:
+      "Aplicación web que reutiliza una base de datos de un sistema de amortización desarrollado en VisualBasic en 2011. Frontend moderno en Next.js diseñado con tecnología IA, incluye integración con Mercado Pago para procesamiento seguro de tarjetas de crédito.",
+    fullDescription:
+      "Proyecto innovador que demuestra la reutilización inteligente de infraestructura legada. Toma una base de datos robusta de un sistema de amortización original en VisualBasic del 2011 y la expone mediante una interfaz moderna desarrollada en Next.js. La experiencia de usuario fue diseñada utilizando tecnología IA para optimizar usabilidad y diseño. Incluye integración con Mercado Pago Developer en entorno de prueba, permitiendo transacciones seguras con tarjetas de crédito. Demuestra expertise en modernización de sistemas legados y arquitectura de aplicaciones escalables.",
+    technologies: [
+      "Next.js",
+      "React",
+      "Mercado Pago API",
+      "IA Design",
+      "VisualBasic Legacy",
+      "MySQL",
+      "Database Integration",
+    ],
+    icon: CreditCard,
+    videoPlaceholder: "",
+    githubUrl: "https://github.com/MarianoBB1988/Deprelo_v0.git",
+    features: [
+      "Integración con base de datos legacy",
+      "Diseño UI/UX generado con IA",
+      "Procesamiento de pagos Mercado Pago",
+      "Modernización de sistemas antiguos",
+      "Interfaz responsiva Next.js",
+      "Entorno de prueba seguro",
     ],
   },
 ];
@@ -270,6 +301,24 @@ export function ProjectsSection() {
                           </a>
                         </Button>
                       )}
+                      {project.githubUrl && (
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="gap-2 text-primary border-primary hover:bg-primary/10"
+                        >
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Ver repositorio"
+                          >
+                            <Code2 className="h-4 w-4" />
+                            Repositorio
+                          </a>
+                        </Button>
+                      )}
                     </div>
                     {selectedProject?.id === project.id && (
                       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
@@ -317,7 +366,7 @@ export function ProjectsSection() {
                           ))}
                         </div>
                         {selectedProject.githubUrl && (
-                          <div className="pt-4">
+                          <div className="pt-4 flex flex-wrap gap-2">
                             <Button asChild variant="outline" className="gap-2 bg-transparent">
                               <a
                                 href={selectedProject.githubUrl}
@@ -325,9 +374,21 @@ export function ProjectsSection() {
                                 rel="noopener noreferrer"
                               >
                                 <Code2 className="h-4 w-4" />
-                                Ver repositorio
+                                Frontend
                               </a>
                             </Button>
+                            {selectedProject.backendGithubUrl && (
+                              <Button asChild variant="outline" className="gap-2 bg-transparent">
+                                <a
+                                  href={selectedProject.backendGithubUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <Code2 className="h-4 w-4" />
+                                  Backend
+                                </a>
+                              </Button>
+                            )}
                           </div>
                         )}
                       </DialogContent>
